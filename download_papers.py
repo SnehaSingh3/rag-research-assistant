@@ -14,6 +14,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 import arxiv
+import requests
 
 PAPERS_DIR = Path("data/papers")
 METADATA_CSV = Path("data/papers_metadata.csv")
@@ -142,9 +143,15 @@ def main():
             print("   already downloaded, skipping")
         else:
             try:
-                paper.download_pdf(dirpath=str(PAPERS_DIR), filename=filename)
+                resp = requests.get(
+                    paper.pdf_url,
+                    timeout=60,
+                    headers={"User-Agent": "rag-research-assistant (student project)"},
+                )
+                resp.raise_for_status()
+                pdf_path.write_bytes(resp.content)
                 print(f"   saved -> {filename}")
-                time.sleep(2)  # be polite to arXiv
+                time.sleep(3)  # be polite to arXiv
             except Exception as e:
                 print(f"   DOWNLOAD FAILED: {e}")
                 not_found.append(title)
