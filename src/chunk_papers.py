@@ -17,26 +17,35 @@ METADATA_CSV = Path("data/papers_metadata.csv")
 CHUNKS_DIR = Path("data/chunks")
 
 HEADING = re.compile(r"^(#{1,4})\s+(.*\S)\s*$")
-REF_HEADING = re.compile(
-    r"^\s*(#{1,6}\s*)?(\*\*|__)?\s*(\d+\.?\s*)?(references|bibliography)\s*(\*\*|__)?\s*$",
-    re.IGNORECASE,
-)
 PICTURE_MARKER = re.compile(r"\*{0,2}=+>\s*picture.*?<=+\*{0,2}", re.IGNORECASE)
 
 
 # ---------- cleaning ----------
 
+def is_reference_heading(line: str) -> bool:
+    """True for lines like '## References', '**7 References**', 'REFERENCES'."""
+    plain = re.sub(r"[#*_`\d.\s]", "", line).lower()
+    return plain in ("references", "reference", "bibliography")
+
+
 def strip_references(text: str):
-    """Cut the text at the last 'References' heading in the second part of the paper."""
+    """Cut the text where the reference list starts. Returns (text, found_flag)."""
     lines = text.split("\n")
+
+    # 1) a short heading line that says References / Bibliography
     candidates = [
         i for i, line in enumerate(lines)
-        if REF_HEADING.match(line) and i > 0.3 * len(lines)
+        if i > 5 and len(line) < 60 and is_reference_heading(line)
     ]
-    if not candidates:
-        return text, False
-    cut = candidates[-1]
-    return "\n".join(lines[:cut]), True
+    if candidates:
+        return "\n".join(lines[:candidates[-1]]), True
+
+    # 2) fallback: the list starts with a line like "[1] Author..."
+    for i, line in enumerate(lines):
+        if i > 0.5 * len(lines) and re.match(r"^\s*[-*]?\s*\[1\]\s+\S", line):
+            return "\n".join(lines[:i]), True
+
+    return text, False
 
 
 def clean_text(text: str) -> str:
