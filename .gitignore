@@ -225,3 +225,5 @@ chroma_db/
 .venv/
 
 data/parsed/
+
+data/chunks/
