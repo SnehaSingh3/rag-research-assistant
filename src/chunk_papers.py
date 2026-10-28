@@ -49,6 +49,13 @@ def strip_references(text: str):
 
 
 def clean_text(text: str) -> str:
+     # text the parser pulled out of inside figures
+    text = re.sub(
+        r"<!--\s*Start of picture text\s*-->.*?<!--\s*End of picture text\s*-->",
+        "", text, flags=re.DOTALL | re.IGNORECASE,
+    )
+    text = re.sub(r"<!--.*?-->", "", text, flags=re.DOTALL)  # leftover HTML comments
+    text = re.sub(r"<br\s*/?>", " ", text, flags=re.IGNORECASE)  # stray <br> tags
     text = PICTURE_MARKER.sub("", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
