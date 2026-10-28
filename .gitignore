@@ -223,3 +223,5 @@ data/papers/*.pdf
 .env
 chroma_db/
 .venv/
+
+data/parsed/
