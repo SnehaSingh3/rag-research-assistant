@@ -30,10 +30,14 @@ def main():
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--collection", default=None,
                         help="collection name (default: taken from the chunk file name)")
+    parser.add_argument("--with-context", action="store_true",
+                        help="prepend paper title and section to each chunk before embedding")
     args = parser.parse_args()
 
     chunks_path = Path(args.chunks)
     collection_name = args.collection or chunks_path.stem  # e.g. chunks_300_50
+    if args.with_context and not args.collection:
+        collection_name += "_ctx"  # e.g. chunks_300_50_ctx
 
     chunks = load_chunks(chunks_path)
     print(f"Loaded {len(chunks)} chunks from {chunks_path}")
@@ -43,7 +47,11 @@ def main():
 
     print("Embedding chunks (this takes a few minutes on CPU)...")
     start = time.time()
-    texts = [c["text"] for c in chunks]
+    if args.with_context:
+        # the model "sees" which paper and section each chunk comes from
+        texts = [f"{c['title']}\nSection: {c['section']}\n{c['text']}" for c in chunks]
+    else:
+        texts = [c["text"] for c in chunks]
     embeddings = model.encode(
         texts,
         batch_size=32,

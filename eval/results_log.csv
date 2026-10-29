@@ -1,2 +1,3 @@
 label,collection,n_questions,hit@1,hit@3,hit@5,hit@10,mrr
 baseline,chunks_300_50,32,0.812,0.875,0.938,0.938,0.853
+ctx_header,chunks_300_50_ctx,32,0.906,0.969,1.000,1.000,0.945
