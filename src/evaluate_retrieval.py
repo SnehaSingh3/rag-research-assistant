@@ -2,7 +2,6 @@
 src/evaluate_retrieval.py
 Scores retrieval quality on eval/questions.json using Hit@k and MRR.
 
-Run from the project root:
     python src/evaluate_retrieval.py --label baseline
     python src/evaluate_retrieval.py --label chunks_500 --collection chunks_500_100
 """
@@ -88,7 +87,7 @@ def main():
         print(f"Hit@{k:<2}: {overall[f'hit@{k}']:.2f}")
     print(f"MRR:    {overall['mrr']:.3f}")
 
-    for level in ("easy", "hard"):
+    for level in sorted({q["difficulty"] for q in questions}):
         subset = [r for q, r in zip(questions, ranks) if q["difficulty"] == level]
         if subset:
             s = summarize(subset)
