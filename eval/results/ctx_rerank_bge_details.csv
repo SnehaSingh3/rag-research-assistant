@@ -1,0 +1,59 @@
+id,difficulty,paper_rank,strict_rank,question
+1,easy,1,1,How does the Transformer use self-attention instead of recurrence?
+2,easy,2,2,How does BERT pre-train with masked language modeling?
+3,hard,1,1,Why do language models struggle to use information placed in the middle of a long prompt?
+4,easy,1,1,How does the original RAG model combine a generator with a retrieved non-parametric memory?
+5,easy,1,1,How does Fusion-in-Decoder handle multiple retrieved passages?
+6,easy,1,1,How does RETRO retrieve from a trillion-token database?
+7,easy,1,1,How does REPLUG improve a frozen black-box language model with retrieval?
+8,hard,1,1,"How can a model decide during generation when to fetch new documents, based on the confidence of its next tokens?"
+9,hard,1,1,Is retrieval better than simply extending the context window of a long-context LLM?
+10,easy,1,1,How does Self-RAG use reflection tokens to critique its own output?
+11,easy,1,1,How does CRAG evaluate retrieved documents and correct bad retrievals?
+12,hard,1,1,How can a RAG system pick a retrieval strategy depending on how complex the question is?
+13,easy,1,1,How does RAPTOR build a tree of summaries for retrieval?
+14,hard,1,1,How can a RAG system answer global questions about an entire corpus using community summaries over a knowledge graph?
+15,easy,1,1,How does HippoRAG use ideas from human long-term memory?
+16,easy,1,1,How does DPR train a dual-encoder retriever for open-domain question answering?
+17,easy,1,1,What is late interaction and how does MaxSim scoring work in ColBERT?
+18,hard,1,1,How was the storage cost of multi-vector retrieval reduced using residual compression?
+19,hard,1,1,How can a dense retriever be trained with contrastive learning and no labeled data?
+20,easy,1,1,How does SPLADE produce sparse representations with term expansion?
+21,hard,1,1,How well does BM25 hold up against dense retrievers in zero-shot evaluation across many datasets?
+22,easy,1,1,What tasks does the MTEB benchmark cover?
+23,hard,1,1,How can document page images be embedded directly for retrieval without running OCR?
+24,easy,1,1,How does HyDE use a hypothetical generated document to improve retrieval?
+25,easy,1,1,How does monoT5 rank passages using a sequence-to-sequence model?
+26,hard,1,1,"What retrieval unit (passage, sentence or proposition) works best for dense retrieval?"
+27,easy,1,1,"Can ChatGPT rerank passages for search, and how does the sliding window approach work?"
+28,easy,1,1,How does RAGAS evaluate faithfulness and answer relevance without reference answers?
+29,hard,1,1,What are the common failure points when engineering a RAG system in practice?
+30,hard,1,1,How does an agent interleave reasoning traces with actions to solve tasks?
+31,hard,1,1,How does ColBERT differ from DPR?
+32,hard,1,1,How does Self-RAG differ from CRAG in handling poor retrieval results?
+33,detail,1,1,What is the difference between RAG-Sequence and RAG-Token?
+34,detail,1,1,What BLEU score did the Transformer reach on WMT 2014 English-to-German translation?
+35,detail,1,1,What are the two unsupervised pre-training tasks used by BERT?
+36,detail,1,1,What does the U-shaped performance curve look like when the position of relevant information changes in the prompt?
+37,detail,1,1,What probability threshold triggers a new retrieval step in forward-looking active retrieval?
+38,detail,1,,"What are the different types of reflection tokens used for retrieval, relevance, support and usefulness?"
+39,detail,1,1,Which three actions can be triggered after a lightweight evaluator scores the retrieved documents?
+40,detail,1,1,"How does a classifier label queries as needing no retrieval, single-step or multi-step retrieval?"
+41,detail,1,3,Which clustering method is used to group text chunks at each level of the summary tree?
+42,detail,1,1,What algorithm is used to detect communities in the entity knowledge graph?
+43,detail,1,1,How is Personalized PageRank used to retrieve passages over a knowledge graph?
+44,detail,1,1,How does dual-level retrieval combine low-level and high-level keywords?
+45,detail,1,1,Which regularizer is used to keep sparse learned representations sparse and efficient?
+46,detail,1,1,How does denoised supervision with hard negatives improve late-interaction retrieval training?
+47,detail,1,2,How are positive pairs created for contrastive learning by cropping spans from the same document?
+48,detail,1,1,What text-pair dataset was curated for weakly-supervised contrastive pre-training of an embedding model?
+49,detail,2,2,How many datasets does the zero-shot retrieval benchmark contain and which domains do they cover?
+50,detail,1,1,How many datasets and languages does the massive text embedding benchmark include?
+51,detail,1,1,What is the ViDoRe benchmark used for?
+52,detail,1,1,"Which four abilities of LLMs does the retrieval-augmented generation benchmark test, such as noise robustness and negative rejection?"
+53,detail,1,1,How do LLM judges show position bias and verbosity bias?
+54,detail,1,1,"What are the Naive, Advanced and Modular RAG paradigms?"
+55,detail,1,1,Which reward signal is used when training an LLM with reinforcement learning to call a search engine?
+56,multi,1,1,Which methods use an LLM to generate pseudo-documents to improve query representations?
+57,multi,1,1,"Compare dense, sparse and late-interaction approaches to first-stage retrieval."
+58,multi,1,1,How do benchmark papers evaluate whether retrieval and generation components of a RAG system actually work?

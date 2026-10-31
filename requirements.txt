@@ -1,11 +1,9 @@
-   arxiv
-   pymupdf4llm
-   sentence-transformers
-   chromadb
-   rank_bm25
-   pandas
-   numpy
-   fastapi
-   uvicorn
-   streamlit
-   python-dotenv
+arxiv
+requests
+pymupdf
+pymupdf4llm
+sentence-transformers
+chromadb
+openai
+python-dotenv
+streamlit
