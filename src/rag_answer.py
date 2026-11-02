@@ -35,7 +35,8 @@ Rules:
 3. If the sources do not contain enough information to answer, reply exactly: "{NOT_FOUND}"
 4. If the sources only partly answer the question, answer the part they cover and say what is missing.
 5. Be concise: at most about 200 words unless the question asks for more detail.
-6. Do not write a separate "Sources" list at the end; the application shows the sources itself."""
+6. Do not write a separate "Sources" list at the end; the application shows the sources itself.
+7. Sources can come from different papers. Name the paper each claim comes from (for example "ColBERTv2 [3]"), never attribute a claim about one paper to another, and do not describe a method unless the sources describe it."""
 
 
 class RAGPipeline:
